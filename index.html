@@ -559,7 +559,7 @@
   ham.addEventListener('click', () => mob.classList.toggle('open'));
   function closeMob() { mob.classList.remove('open'); }
 
-  // Active nav on scroll
+  // Active nav highlight on scroll
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
@@ -588,7 +588,7 @@
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    submitBtn.textContent = 'Sending…';
+    submitBtn.textContent = 'Sending...';
     submitBtn.disabled = true;
     formSuccess.style.display = 'none';
     formError.style.display = 'none';
@@ -596,29 +596,29 @@
       const res = await fetch('https://formspree.io/f/mjgpzaqn', {
         method: 'POST',
         body: new FormData(form),
-                'Accept': 'application/json'
-      }});
-      if (res.ok) {{
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
         formSuccess.style.display = 'block';
         form.reset();
-        submitBtn.textContent = '✅ Submitted!';
+        submitBtn.textContent = 'Submitted!';
         submitBtn.style.background = '#2d6a4f';
         submitBtn.style.color = '#fff';
-        setTimeout(() => {{
-          submitBtn.textContent = 'Submit Enquiry →';
+        setTimeout(() => {
+          submitBtn.textContent = 'Submit Enquiry';
           submitBtn.style.background = '';
           submitBtn.style.color = '';
           submitBtn.disabled = false;
-        }}, 4000);
-      }} else {{
+        }, 4000);
+      } else {
         throw new Error('failed');
-      }}
-    }} catch(err) {{
+      }
+    } catch(err) {
       formError.style.display = 'block';
-      submitBtn.textContent = 'Submit Enquiry →';
+      submitBtn.textContent = 'Submit Enquiry';
       submitBtn.disabled = false;
-    }}
-  }});
+    }
+  });
 </script>
 </body>
 </html>
